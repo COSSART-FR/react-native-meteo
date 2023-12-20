@@ -16,6 +16,9 @@ const s = StyleSheet.create({
     // Taille du bouton back
     marginRight: 30,
   },
+  forecastList: {
+    marginTop: 50,
+  },
 });
 
 export { s };

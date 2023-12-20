@@ -55,7 +55,7 @@ export default function Home() {
   }
 
   function goToForecastPage() {
-    nav.navigate("Forecast", {city, ...weather.daily})
+    nav.navigate("Forecast", { city, ...weather.daily });
   }
 
   return currentWeather ? (

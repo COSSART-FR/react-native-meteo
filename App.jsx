@@ -21,7 +21,7 @@ export default function App() {
     <NavigationContainer theme={navTheme}>
       {isFontLoaded ? (
         <Stack.Navigator
-          screenOptions={{ headerShown: false, animation: "fade" }}
+          screenOptions={{ headerShown: false, animation: "fade_from_bottom" }}
           initialRouteName="Home"
         >
           <Stack.Screen name="Home" component={Home} />
