@@ -7,8 +7,19 @@ import AlataRegular from "./assets/fonts/Alata-Regular.ttf";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Forecast from "./pages/Forecast/Forecast";
 
 SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
+
+const navTheme = {
+  colors: {
+    background: "transparent",
+  },
+};
 
 export default function App() {
   const [isFontLoaded] = useFonts({
@@ -26,17 +37,25 @@ export default function App() {
   }
 
   return (
-    <ImageBackground
-      source={backgroundImg}
-      style={s.background_img}
-      imageStyle={s.img}
-      onLayout={onLayoutRootView}
-    >
-      <SafeAreaProvider>
-        <SafeAreaView style={s.container}>
-          <Home />
-        </SafeAreaView>
-      </SafeAreaProvider>
-    </ImageBackground>
+    <NavigationContainer theme={navTheme}>
+      <ImageBackground
+        source={backgroundImg}
+        style={s.background_img}
+        imageStyle={s.img}
+        onLayout={onLayoutRootView}
+      >
+        <SafeAreaProvider>
+          <SafeAreaView style={s.container}>
+            <Stack.Navigator
+              screenOptions={{ headerShown: false }}
+              initialRouteName="Home"
+            >
+              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="Forecast" component={Forecast} />
+            </Stack.Navigator>
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </ImageBackground>
+    </NavigationContainer>
   );
 }
