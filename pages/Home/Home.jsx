@@ -1,4 +1,10 @@
-import { Alert, Text, View } from "react-native";
+import {
+  Alert,
+  Keyboard,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { s } from "./Home.style";
 import {
   requestForegroundPermissionsAsync,
@@ -78,9 +84,11 @@ export default function Home() {
           onPress={goToForecastPage}
         />
       </View>
-      <View style={s.searchbar_container}>
-        <SearchBar onSubmit={fetchCoordsByCity} />
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={s.searchbar_container}>
+          <SearchBar onSubmit={fetchCoordsByCity} />
+        </View>
+      </TouchableWithoutFeedback>
       <View style={s.meteo_advanced}>
         <MeteoAdvanced
           // split pour récupérer seulement l'heure qui se situe après le T, donc [1] pour récupérer le deuxième élément du tableau
