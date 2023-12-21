@@ -11,6 +11,7 @@ import { getWeatherInterpretation } from "../../services/meteo-service";
 import MeteoAdvanced from "../../components/MeteoAdvanced/MeteoAdvanced";
 import { useNavigation } from "@react-navigation/native";
 import { Container } from "../../components/Container/Container";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 export default function Home() {
   const [coords, setCoords] = useState();
@@ -68,7 +69,9 @@ export default function Home() {
           onPress={goToForecastPage}
         />
       </View>
-      <View style={s.searchbar_container}></View>
+      <View style={s.searchbar_container}>
+        <SearchBar />
+      </View>
       <View style={s.meteo_advanced}>
         <MeteoAdvanced
           // split pour récupérer seulement l'heure qui se situe après le T, donc [1] pour récupérer le deuxième élément du tableau
